@@ -17,7 +17,7 @@ jobs:
       fail-fast: False
       matrix:
         python-version: ['3.8', '3.9', '3.10', '3.11']
-        os: [ubuntu-latest, ubuntu-20.04, mac-os]
+        os: [ubuntu-latest, ubuntu-20.04, macos-latest]
     defaults:
       run:
         # This is needed otherwise we can't activate the conda installation
