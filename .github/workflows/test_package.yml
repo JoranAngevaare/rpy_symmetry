@@ -36,7 +36,7 @@ jobs:
           mamba-version: '*'
       - name: install
         run: |
-          conda install -c conda-forge r-base  r-essentials rpy2
+          conda install -c conda-forge r-base  r-essentials rpy2  -q
           pip install -r .test_requirements.txt
           pip install -e ../rpy_symmetry
       - name: Run the tests
