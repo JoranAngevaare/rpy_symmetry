@@ -16,9 +16,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
       - name: Install dependencies
-        run: pip install wheel twine
-      - name: Build package
-        run: python setup.py sdist bdist_wheel
+        run: pip install wheel twine sdist bdist_wheel
       # Do the publish
       - name: Publish a Python distribution to PyPI
         env:
