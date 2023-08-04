@@ -3,4 +3,3 @@ coveralls
 pytest
 numpy
 rpy2
-unittest
