@@ -2,17 +2,16 @@
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
-[options]
-install_requires = [
-    "numpy",
-    "rpy2"
-]
 
 [project]
 name = "rpy_symmetry"
 version = "0.0.0"
 
 [metadata]
+dependencies = [
+    "numpy",
+    "rpy2"
+]
 author ='Joran R. Angevaare'
 
 description = "Light weight bridge from `R` to `python` of the [`symmetry` R-module](https://cran.r-project.org/web/packages/symmetry)."
