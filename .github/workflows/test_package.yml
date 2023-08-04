@@ -42,7 +42,7 @@ jobs:
       - name: Run the tests
         run:
           |
-          coverage run --source=optim_esm_tools -m pytest -v --durations 0
+          coverage run --source=rpy_symmetry -m pytest -v --durations 0
           coverage report
       - name: Upload coverage
         if: matrix.test != 'minimal'
