@@ -1,3 +1,5 @@
 coverage
 coveralls
 pytest
+numpy
+rpy2
