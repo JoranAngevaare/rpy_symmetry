@@ -16,8 +16,8 @@ jobs:
     strategy:
       fail-fast: False
       matrix:
-        python-version: ['3.8', '3.9', '3.10']
-        os: [ubuntu-latest, ubuntu-20.04]
+        python-version: ['3.8', '3.9', '3.10', '3.11']
+        os: [ubuntu-latest, ubuntu-20.04, mac-os]
     defaults:
       run:
         # This is needed otherwise we can't activate the conda installation
@@ -34,7 +34,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           activate-environment: 'python_r'
           mamba-version: '*'
-      - name: run partial install
+      - name: install
         run: |
           conda install -c conda-forge r-base  r-essentials rpy2
           pip install -r .test_requirements.txt
