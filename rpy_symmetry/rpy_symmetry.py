@@ -12,6 +12,22 @@ def symmetry_test(
     _method: str = 'symmetry_test',
     **kw,
 ) -> dict:
+    """Perform symmetry test of dataset x
+
+    See https://cran.r-project.org/web/packages/symmetry/symmetry.pdf for more
+    info.
+
+    Args:
+        x (ty.Union[tuple, list, np.ndarray]): Dataset to test
+        test_statistic (str, optional): Which method to use (see ref). Defaults to 'MI'.
+        test_k (int, optional): Required argument, only relevant for some test_statistics (but not
+            MI, the default). Defaults to 1.
+        _module (str, optional): Which module to load. Defaults to 'symmetry'.
+        _method (str, optional): Wich function to call. Defaults to 'symmetry_test'.
+
+    Returns:
+        dict: results dictionary of the test.
+    """
     test = getattr(get_module(_module), _method)
     result = test(
         x=FloatVector(x),
@@ -23,6 +39,7 @@ def symmetry_test(
 
 
 def p_symmetry(x: np.ndarray, **kw) -> float:
+    """Get the p-value of the symmetry test, see symmetry_test"""
     return float(symmetry_test(x, **kw)['p.value'])
 
 
