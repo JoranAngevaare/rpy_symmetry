@@ -1,0 +1,53 @@
+name: Pytest
+
+on:
+  workflow_dispatch:
+  release:
+    types: [created]
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    name: '$${{ matrix.os }}, py${{ matrix.python-version }}'
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: False
+      matrix:
+        python-version: ['3.8', '3.9', '3.10']
+        os: [ubuntu-latest, ubuntu-20.04]
+    defaults:
+      run:
+        # This is needed otherwise we can't activate the conda installation
+        shell: bash -l {0}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniforge-variant: Mambaforge
+          miniforge-version: latest
+          use-mamba: true
+          auto-update-conda: true
+          python-version: ${{ matrix.python-version }}
+          activate-environment: 'python_r'
+          mamba-version: '*'
+      - name: run partial install
+        run: |
+          conda install -c conda-forge r-base  r-essentials rpy2
+          pip install -r .test_requirements.txt
+          pip install -e ../rpy_symmetry
+      - name: Run the tests
+        run:
+          |
+          coverage run --source=optim_esm_tools -m pytest -v --durations 0
+          coverage report
+      - name: Upload coverage
+        if: matrix.test != 'minimal'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: coveralls --service=github
+      - name: goodbye
+        run: echo goodbye

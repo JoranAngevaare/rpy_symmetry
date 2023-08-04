@@ -1,0 +1,29 @@
+name: Pipy
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Setup steps
+      - name: Setup python
+        uses: actions/setup-python@v4.5.0
+        with:
+          python-version: "3.8"
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: pip install wheel twine
+      - name: Build package
+        run: python setup.py sdist bdist_wheel
+      # Do the publish
+      - name: Publish a Python distribution to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.pypi_password }}
+        run: |
+          python -m build
+          twine upload dist/*
