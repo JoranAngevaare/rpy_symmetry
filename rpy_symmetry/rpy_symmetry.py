@@ -67,8 +67,7 @@ def _install_package_on_the_fly(package: str) -> None:
         utils.install_packages(StrVector(packnames))
     except rpy2.rinterface_lib.embedded.RRuntimeError as e:
         raise RuntimeError(
-            f'Cannot install {package} on the fly, please make sure that R is '
-            f'properly installed'
+            f'Cannot install {package} on the fly, please make sure that R is properly installed'
         ) from e
 
 
