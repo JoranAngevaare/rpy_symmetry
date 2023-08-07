@@ -44,7 +44,7 @@ jobs:
         run:
           |
           coverage run --source=rpy_symmetry -m pytest -v --durations 0
-          coverage run --append --source=rpy_symmetry -m pytest -v --nbmake notebooks/*.ipynb
+          coverage run --append --source=rpy_symmetry -m pytest -v --nbmake examples/*.ipynb
           coverage report
       - name: Upload coverage
         env:
