@@ -45,7 +45,6 @@ jobs:
           coverage run --source=rpy_symmetry -m pytest -v --durations 0
           coverage report
       - name: Upload coverage
-        if: matrix.test != 'minimal'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: coveralls --service=github
