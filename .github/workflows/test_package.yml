@@ -39,7 +39,7 @@ jobs:
           conda install -c conda-forge r-essentials rpy2  -q
           pip install -r .test_requirements.txt
           pip install -e ../rpy_symmetry
-          pip install nbmake ipython tqdm
+          pip install nbmake ipython tqdm matplotlib
       - name: Run the tests
         run:
           |
