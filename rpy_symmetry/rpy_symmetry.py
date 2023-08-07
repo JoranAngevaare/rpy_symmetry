@@ -58,14 +58,14 @@ def get_module(name: str = 'symmetry'):
 
 def _install_package_on_the_fly(package: str) -> None:
     from rpy2.robjects.vectors import StrVector
-    import rpy2.rinterface_lib.embedded.RRuntimeError
+    from rpy2.rinterface_lib.embedded import RRuntimeError
 
     utils = rpackages.importr('utils')
     packnames = (package,)
     utils.chooseCRANmirror(ind=1)
     try:
         utils.install_packages(StrVector(packnames))
-    except rpy2.rinterface_lib.embedded.RRuntimeError as e:
+    except RRuntimeError as e:
         raise RuntimeError(
             f'Cannot install {package} on the fly, please make sure that R is properly installed'
         ) from e
