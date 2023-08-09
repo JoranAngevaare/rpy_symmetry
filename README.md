@@ -1,4 +1,9 @@
 # `Rpy_symmetry`
+[![Coverage Status](https://coveralls.io/repos/github/JoranAngevaare/rpy_symmetry/badge.svg)](https://coveralls.io/github/JoranAngevaare/rpy_symmetry)
+[![PyPI version shields.io](https://img.shields.io/pypi/v/orpy_symmetry.svg)](https://pypi.python.org/pypi/rpy_symmetry/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/rpy_symmetry.svg)](https://pypi.python.org/pypi/rpy_symmetry)
+[![PyPI downloads](https://img.shields.io/pypi/dm/rpy_symmetry.svg)](https://pypistats.org/packages/rpy_symmetry)
+
 Light weight bridge from `R` to `python` of the [`symmetry` R-module](https://cran.r-project.org/web/packages/symmetry).
 
 
