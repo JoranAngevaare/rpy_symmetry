@@ -12,19 +12,19 @@ dependencies = [
     "numpy",
     "rpy2",
 ]
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
 
 [metadata]
 author ='Joran R. Angevaare'
-
 description = "Light weight bridge from `R` to `python` of the [`symmetry` R-module](https://cran.r-project.org/web/packages/symmetry)."
-long_description = "file: README.md"
+long_description = { file = "README.md"}
 long_description_content_type = "text/markdown"
 repository='https://github.com/JoranAngevaare/rpy_symmetry'
 url='https://github.com/JoranAngevaare/rpy_symmetry'
 where = ["rpy_symmetry"]
-python_requires='>=3.8'
 license = "MIT"
-
 classifiers=[
     'Intended Audience :: Science/Research',
     'Development Status :: 2 - Pre-Alpha',
@@ -40,7 +40,3 @@ classifiers=[
 [tool.black]
 target-version = ['py38']
 skip-string-normalization = true
-
-
-[tool.poetry]
-readme="README.md"
