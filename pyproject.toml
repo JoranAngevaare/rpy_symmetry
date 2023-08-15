@@ -47,8 +47,4 @@ target-version = ['py38']
 skip-string-normalization = true
 
 [tool.coverage.report]
-exclude_lines =[
-    "print",
-    "except",
-    "raise",
-]
+exclude_lines = ["print", "except", "raise"]
