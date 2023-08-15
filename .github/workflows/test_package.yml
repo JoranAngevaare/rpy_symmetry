@@ -37,8 +37,7 @@ jobs:
       - name: install
         run: |
           conda install -c conda-forge r-base  -q
-          pip install -e ../rpy_symmetry
-          pip install -r .test_requirements.txt
+          pip install -e ../rpy_symmetry[test]
       - name: Run the tests
         run:
           |
