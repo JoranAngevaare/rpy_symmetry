@@ -36,10 +36,9 @@ jobs:
           mamba-version: '*'
       - name: install
         run: |
-          conda install -c conda-forge r-base rpy2  -q
-          pip install -r .test_requirements.txt
+          conda install -c conda-forge r-base  -q
           pip install -e ../rpy_symmetry
-          pip install nbmake ipython tqdm matplotlib
+          pip install -r .test_requirements.txt
       - name: Run the tests
         run:
           |

@@ -1,5 +1,7 @@
 coverage
 coveralls
-numpy
+ipython
+matplotlib
+nbmake
 pytest
-rpy2
+tqdm
