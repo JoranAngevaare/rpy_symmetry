@@ -15,7 +15,7 @@ def test_wo_cache():
     rsym.rpy_symmetry.ALLOW_CACHING = False
     rsym.rpy_symmetry._imported_package = {}
     pval = rsym.p_symmetry([1, 2, 3])
-    
+
     assert pval
     assert rsym.rpy_symmetry._imported_package == {}
 
