@@ -3,6 +3,9 @@ import typing as ty
 import rpy2.robjects.packages as rpackages
 from rpy2.robjects.vectors import FloatVector
 
+ALLOW_CACHING = True
+_imported_package = {}
+
 
 def symmetry_test(
     x: ty.Union[tuple, list, np.ndarray],
@@ -44,6 +47,13 @@ def p_symmetry(x: np.ndarray, **kw) -> float:
 
 
 def get_module(name: str = 'symmetry'):
+    """Get package <name> and keep it cached so that it doesn't have to load next time
+
+    Caching can be disabled by setting ALLOW_CACHING=False
+    """
+    if name in _imported_package:
+        return _imported_package[name]
+
     if not rpackages.isinstalled(name):
         if name == 'symmetry':
             _install_package_on_the_fly(name)
@@ -53,7 +63,12 @@ def get_module(name: str = 'symmetry'):
                 f'{name} is not installed in R, you can use '
                 f'_install_package_on_the_fly(\'{name}\')"'
             )
-    return rpackages.importr(name)
+    if not ALLOW_CACHING:
+        return rpackages.importr(name)
+
+    if name not in _imported_package:
+        _imported_package[name] = rpackages.importr(name)
+    return _imported_package[name]
 
 
 def _install_package_on_the_fly(package: str) -> None:
