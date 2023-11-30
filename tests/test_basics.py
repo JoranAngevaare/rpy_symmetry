@@ -4,7 +4,7 @@ import unittest
 def test_install_on_fly():
     import rpy_symmetry as rsym
 
-    rsym.get_module('no_such_module')
+    rsym.get_module('symmetry')
 
 
 def test_minimal():
