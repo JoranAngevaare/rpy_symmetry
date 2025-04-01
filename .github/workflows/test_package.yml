@@ -37,7 +37,6 @@ jobs:
           use-only-tar-bz2: true
           auto-update-conda: true
           python-version: ${{ matrix.python-version }}
-          conda-remove-defaults: true
           activate-environment: 'python_r'
       - name: install
         run: |
