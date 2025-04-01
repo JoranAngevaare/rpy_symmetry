@@ -10,7 +10,7 @@ maintainers = [{ name = "Joran R. Angevaare" }]
 description = "Light weight bridge from `R` to `python` of the [`symmetry` R-module](https://cran.r-project.org/web/packages/symmetry)."
 classifiers = [
     'Intended Audience :: Science/Research',
-    'Development Status :: 2 - Pre-Alpha',
+    'Development Status :: 5 - Production/Stable',
     'Natural Language :: English',
     'Programming Language :: Python :: 3.8',
     'Programming Language :: Python :: 3.9',
