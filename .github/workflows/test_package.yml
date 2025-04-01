@@ -37,8 +37,8 @@ jobs:
           use-only-tar-bz2: true
           auto-update-conda: true
           python-version: ${{ matrix.python-version }}
+          conda-remove-defaults: true
           activate-environment: 'python_r'
-          mamba-version: '*'
       - name: install
         run: |
           conda activate python_r
