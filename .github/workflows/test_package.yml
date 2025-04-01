@@ -25,18 +25,23 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+      - name: Setup python
+        uses: actions/setup-python@v5.2.0
+        with:
+          python-version: ${{ matrix.python-version }}
       - uses: conda-incubator/setup-miniconda@v3
         with:
-          miniforge-variant: Mambaforge
-          miniforge-version: latest
-          use-mamba: true
+          installer-url: https://github.com/conda-forge/miniforge/releases/download/24.9.2-0/Miniforge3-24.9.2-0-Linux-x86_64.sh
+          allow-softlinks: true
+          show-channel-urls: true
+          use-only-tar-bz2: true
           auto-update-conda: true
           python-version: ${{ matrix.python-version }}
           activate-environment: 'python_r'
-          mamba-version: '*'
       - name: install
         run: |
-          conda install -c conda-forge r-base  -q
+          conda activate python_r
+          conda install -c conda-forge r-base -q
           pip install -e ../rpy_symmetry[test]
       - name: Run the tests
         run:
